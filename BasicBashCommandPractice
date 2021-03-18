@@ -1,0 +1,154 @@
+[ec2-user@ip-172-31-80-70 ~]$ sudo useradd dmesmer
+[ec2-user@ip-172-31-80-70 ~]$ sudo useradd jonesdh
+[ec2-user@ip-172-31-80-70 ~]$ passwd --help
+Usage: passwd [OPTION...] <accountName>
+  -k, --keep-tokens       keep non-expired authentication tokens
+  -d, --delete            delete the password for the named account (root only); also removes password lock if any
+  -l, --lock              lock the password for the named account (root only)
+  -u, --unlock            unlock the password for the named account (root only)
+  -e, --expire            expire the password for the named account (root only)
+  -f, --force             force operation
+  -x, --maximum=DAYS      maximum password lifetime (root only)
+  -n, --minimum=DAYS      minimum password lifetime (root only)
+  -w, --warning=DAYS      number of days warning users receives before password expiration (root only)
+  -i, --inactive=DAYS     number of days after password expiration when an account becomes disabled (root only)
+  -S, --status            report password status on the named account (root only)
+      --stdin             read new tokens from stdin (root only)
+
+Help options:
+  -?, --help              Show this help message
+      --usage             Display brief usage message
+[ec2-user@ip-172-31-80-70 ~]$ ls /home/
+dmesmer  ec2-user  jonesdh
+[ec2-user@ip-172-31-80-70 ~]$ sudo passwd jonesdh
+Changing password for user jonesdh.
+New password:
+BAD PASSWORD: The password is shorter than 8 characters
+Retype new password:
+passwd: all authentication tokens updated successfully.
+[ec2-user@ip-172-31-80-70 ~]$ sudo passwd dmesmer
+Changing password for user dmesmer.
+New password:
+Retype new password:
+passwd: all authentication tokens updated successfully.
+[ec2-user@ip-172-31-80-70 ~]$ su dmesmer
+Password:
+[dmesmer@ip-172-31-80-70 ec2-user]$ pwd
+/home/ec2-user
+[dmesmer@ip-172-31-80-70 ec2-user]$ mkdir images
+mkdir: cannot create directory ‘images’: Permission denied
+[dmesmer@ip-172-31-80-70 ec2-user]$ exit
+exit
+[ec2-user@ip-172-31-80-70 ~]$ su -l dmesmer
+Password:
+Last login: Fri Feb  5 07:54:18 UTC 2021 on pts/0
+[dmesmer@ip-172-31-80-70 ~]$ mkdir dmesmer
+[dmesmer@ip-172-31-80-70 ~]$ ls
+dmesmer
+[dmesmer@ip-172-31-80-70 ~]$ mkdir images
+[dmesmer@ip-172-31-80-70 ~]$ ls
+dmesmer  images
+[dmesmer@ip-172-31-80-70 ~]$ rmdir dmesmer
+[dmesmer@ip-172-31-80-70 ~]$ ls
+images
+[dmesmer@ip-172-31-80-70 ~]$ cd /user/s
+-bash: cd: /user/s: No such file or directory
+[dmesmer@ip-172-31-80-70 ~]$ exit
+logout
+[ec2-user@ip-172-31-80-70 ~]$ /user/s
+-bash: /user/s: No such file or directory
+[ec2-user@ip-172-31-80-70 ~]$ cd /user/s
+-bash: cd: /user/s: No such file or directory
+[ec2-user@ip-172-31-80-70 ~]$ cd /usr/s
+-bash: cd: /usr/s: No such file or directory
+[ec2-user@ip-172-31-80-70 ~]$ cd /usr/s
+sbin/  share/ src/
+[ec2-user@ip-172-31-80-70 ~]$ cd /usr/share/
+aclocal/             dict/                gnome/               licenses/            pixmaps/             sssd-kcm/
+appdata/             doc/                 gnupg/               locale/              pkgconfig/           systemd/
+applications/        empty/               groff/               magic                pki/                 systemtap/
+audit/               factory/             grub/                makedumpfile/        polkit-1/            tabset/
+augeas/              file/                help/                man/                 publicsuffix/        terminfo/
+authselect/          games/               hwdata/              metainfo/            python3-wheels/      themes/
+awk/                 gawk/                i18n/                microcode_ctl/       python-dmidecode/    tuned/
+backgrounds/         gcc-8/               icons/               mime/                qemu-kvm/            wayland-sessions/
+bash-completion/     gdb/                 idl/                 mime-info/           redhat-release/      X11/
+cracklib/            GeoIP/               info/                misc/                rhsm-plugins/        xsessions/
+crypto-policies/     gettext/             kdump/               omf/                 selinux/             zoneinfo/
+dbus-1/              gettext-0.19.8/      libgpg-error/        os-prober/           sounds/              zsh/
+desktop-directories/ glib-2.0/            libreport/           p11-kit/             sssd/
+[ec2-user@ip-172-31-80-70 ~]$ cd /usr/share/doc/
+Display all 235 possibilities? (y or n)
+[ec2-user@ip-172-31-80-70 ~]$ cd /usr/share/doc/python3-
+python3-cffi/             python3-ethtool/          python3-libs/             python3-pysocks/
+python3-chardet/          python3-gobject-base/     python3-libxml2/          python3-pytz/
+python3-configobj/        python3-gpg/              python3-magic/            python3-pyudev/
+python3-cryptography/     python3-idna/             python3-markupsafe/       python3-pyyaml/
+python3-dateutil/         python3-inotify/          python3-oauthlib/         python3-requests/
+python3-dbus/             python3-jinja2/           python3-ply/              python3-six/
+python3-decorator/        python3-jsonpatch/        python3-prettytable/      python3-syspurpose/
+python3-dmidecode/        python3-jsonpointer/      python3-pycparser/        python3-unbound/
+python3-dnf-plugins-core/ python3-jsonschema/       python3-pyserial/         python3-urllib3/
+[ec2-user@ip-172-31-80-70 ~]$ cd /usr/share/doc/python3-jinja2/html/_static/
+[ec2-user@ip-172-31-80-70 _static]$ ls
+ajax-loader.gif     comment.png               down-pressed.png  jquery-3.2.1.js  pygments.css         up.png
+basic.css           doctools.js               file.png          jquery.js        searchtools.js       up-pressed.png
+comment-bright.png  documentation_options.js  jinja.css         minus.png        underscore-1.3.1.js  websupport.js
+comment-close.png   down.png                  jinja-small.png   plus.png         underscore.js
+[ec2-user@ip-172-31-80-70 _static]$ ls *.png
+comment-bright.png  comment.png  down-pressed.png  jinja-small.png  plus.png  up-pressed.png
+comment-close.png   down.png     file.png          minus.png        up.png
+[ec2-user@ip-172-31-80-70 _static]$ cp *.png
+cp: target 'up-pressed.png' is not a directory
+[ec2-user@ip-172-31-80-70 _static]$ cp *.png /home/dmesmer/images
+cp: failed to access '/home/dmesmer/images': Permission denied
+[ec2-user@ip-172-31-80-70 _static]$ su dmesmer
+Password:
+[dmesmer@ip-172-31-80-70 _static]$ exit
+exit
+[ec2-user@ip-172-31-80-70 _static]$ su -l dmesmer
+Password:
+su: Authentication failure
+[ec2-user@ip-172-31-80-70 _static]$ su -l dmesmer
+Password:
+Last login: Fri Feb  5 08:12:06 UTC 2021 on pts/0
+Last failed login: Fri Feb  5 08:13:13 UTC 2021 on pts/0
+There was 1 failed login attempt since the last successful login.
+[dmesmer@ip-172-31-80-70 ~]$ ls
+images
+[dmesmer@ip-172-31-80-70 ~]$ cd
+.bash_history  .bash_logout   .bash_profile  .bashrc        images/
+[dmesmer@ip-172-31-80-70 ~]$ cd images/
+[dmesmer@ip-172-31-80-70 images]$ cp /usr/share/doc/python3-jinja2/html/_static/*.png images/
+cp: target 'images/' is not a directory
+[dmesmer@ip-172-31-80-70 images]$ cp /usr/share/doc/python3-jinja2/html/_static/*.png dmesmer/images/
+cp: target 'dmesmer/images/' is not a directory
+[dmesmer@ip-172-31-80-70 images]$ cp /usr/share/doc/python3-jinja2/html/_static/*.png /dmesmer/images/
+cp: target '/dmesmer/images/' is not a directory
+[dmesmer@ip-172-31-80-70 images]$ cp /usr/share/doc/python3-jinja2/html/_static/*.png .
+[dmesmer@ip-172-31-80-70 images]$ ls images
+ls: cannot access 'images': No such file or directory
+[dmesmer@ip-172-31-80-70 images]$ ls
+comment-bright.png  comment.png  down-pressed.png  jinja-small.png  plus.png  up-pressed.png
+comment-close.png   down.png     file.png          minus.png        up.png
+[dmesmer@ip-172-31-80-70 images]$ pwd
+/home/dmesmer/images
+[dmesmer@ip-172-31-80-70 images]$ ls -l images/
+ls: cannot access 'images/': No such file or directory
+[dmesmer@ip-172-31-80-70 images]$ ls -l
+comment-bright.png  comment.png         down-pressed.png    jinja-small.png     plus.png            up-pressed.png
+comment-close.png   down.png            file.png            minus.png           up.png
+[dmesmer@ip-172-31-80-70 images]$ ls -l
+total 52
+-rw-r--r--. 1 dmesmer dmesmer   756 Feb  5 08:17 comment-bright.png
+-rw-r--r--. 1 dmesmer dmesmer   829 Feb  5 08:17 comment-close.png
+-rw-r--r--. 1 dmesmer dmesmer   641 Feb  5 08:17 comment.png
+-rw-r--r--. 1 dmesmer dmesmer   202 Feb  5 08:17 down.png
+-rw-r--r--. 1 dmesmer dmesmer   222 Feb  5 08:17 down-pressed.png
+-rw-r--r--. 1 dmesmer dmesmer   286 Feb  5 08:17 file.png
+-rw-r--r--. 1 dmesmer dmesmer 10484 Feb  5 08:17 jinja-small.png
+-rw-r--r--. 1 dmesmer dmesmer    90 Feb  5 08:17 minus.png
+-rw-r--r--. 1 dmesmer dmesmer    90 Feb  5 08:17 plus.png
+-rw-r--r--. 1 dmesmer dmesmer   203 Feb  5 08:17 up.png
+-rw-r--r--. 1 dmesmer dmesmer   214 Feb  5 08:17 up-pressed.png
+[dmesmer@ip-172-31-80-70 images]$
